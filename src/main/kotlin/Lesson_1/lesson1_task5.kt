@@ -1,21 +1,19 @@
 package org.example.Lesson_1
 
-fun main() {
+const val MINUTE = 60
+const val HOUR = 60
 
-    // 1 minute = 60 sec
-    // 1 hour = 60 min
-    // 1 hour = 3600 sec
-    // Space time in seconds is 6480 sec (108 minutes * 60 seconds)
+fun main() {
 
     val totalFlightSeconds: Int = 6480
 
-    val spaceFlightHours: Int = totalFlightSeconds / 3600 // 1 hour
-    val secondsRemain: Int = totalFlightSeconds % 3600 // 2880 seconds
+    val spaceFlightHours: Int = totalFlightSeconds / (MINUTE * HOUR)
+    val secondsRemain: Int = totalFlightSeconds % (MINUTE * HOUR)
 
-    val spaceFlightMinutes: Int = secondsRemain / 60 // 48 minutes
-    val minutesRemain: Int = secondsRemain % 60 // 0
+    val spaceFlightMinutes: Int = secondsRemain / MINUTE
+    val minutesRemain: Int = secondsRemain % MINUTE
 
-    val spaceFlightSeconds: Int = minutesRemain // 0 seconds
+    val spaceFlightSeconds: Int = minutesRemain
 
     println(String.format("%02d:%02d:%02d", spaceFlightHours, spaceFlightMinutes, spaceFlightSeconds))
 
