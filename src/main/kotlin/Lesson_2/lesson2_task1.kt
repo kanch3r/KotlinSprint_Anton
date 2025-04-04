@@ -7,8 +7,8 @@ fun main() {
     val student3: Float = 3f
     val student4: Float = 5f
 
-    val average: Float = (student1 + student2 + student3 + student4) / 4 // среднее арифметическое
+    val average: Float = (student1 + student2 + student3 + student4) / 4
 
-    println(average) // 3.75
+    println(average)
 
 }
