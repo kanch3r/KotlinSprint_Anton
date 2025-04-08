@@ -4,8 +4,8 @@ const val BUFF: Float = 0.2f
 
 fun main() {
 
-    val ironOre: Int = 7
-    val crystalOre: Int = 11
+    val ironOre: Int = 11
+    val crystalOre: Int = 7
 
     val ironOreBuffed: Float = ironOre * BUFF
     val crystalOreBuffed: Float = crystalOre * BUFF
