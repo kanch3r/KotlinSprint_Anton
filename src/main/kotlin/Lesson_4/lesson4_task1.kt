@@ -7,7 +7,7 @@ fun main() {
     val tablesReservedToday: Int = 13
     val tablesReservedTomorrow: Int = 9
 
-    println("Доступность столиков на сегодня: ${tablesReservedToday != TABLES} " +
-            "\nДоступность столиков на сегодня: ${tablesReservedTomorrow != TABLES}")
+    println("Доступность столиков на сегодня: ${tablesReservedToday != TABLES && tablesReservedToday <= TABLES} " +
+            "\nДоступность столиков на сегодня: ${tablesReservedTomorrow != TABLES && tablesReservedTomorrow <= TABLES}")
 
 }
