@@ -1,19 +1,20 @@
 package org.example.Lesson_4
 
+const val DELIMITER_TO_FIND_ODD: Int = 2
+
 fun main() {
 
     val trainingDay: Int = 5
 
-    val handDay: Boolean = trainingDay % 2 == 1
-    val legDay: Boolean = trainingDay % 2 == 0
-    val backDay: Boolean = trainingDay % 2 == 0
-    val pressDay: Boolean = trainingDay % 2 == 1
+    val dayForHandAndPress = trainingDay % DELIMITER_TO_FIND_ODD == 1
 
-    println("""
-Упражения для рук:     $handDay
-Упражнения для ног:    $legDay
-Упражнения для спины:  $backDay
-Упражнения для пресса: $pressDay
-    """.trimMargin())
+    println(
+        """
+Упражения для рук:     ${dayForHandAndPress}
+Упражнения для ног:    ${!dayForHandAndPress}
+Упражнения для спины:  ${!dayForHandAndPress}
+Упражнения для пресса: ${dayForHandAndPress}
+    """.trimMargin()
+    )
 
 }
