@@ -14,7 +14,7 @@ fun main() {
     val userNumber2: Int = readln().toInt()
 
     val result =
-        if ((userNumber1 == WIN_NUMBER_1 && userNumber2 == WIN_NUMBER_2) || userNumber1 == WIN_NUMBER_2 && userNumber2 == WIN_NUMBER_1) {
+        if ((userNumber1 == WIN_NUMBER_1 && userNumber2 == WIN_NUMBER_2) || (userNumber1 == WIN_NUMBER_2 && userNumber2 == WIN_NUMBER_1)) {
             "Поздравляем! Вы выиграли главный приз!"
         } else if ((userNumber1 == WIN_NUMBER_1 && userNumber2 != WIN_NUMBER_2) || (userNumber1 == WIN_NUMBER_2 && userNumber2 != WIN_NUMBER_1) ||
             (userNumber2 == WIN_NUMBER_1 && userNumber1 != WIN_NUMBER_2) || (userNumber2 == WIN_NUMBER_2 && userNumber1 != WIN_NUMBER_1)
