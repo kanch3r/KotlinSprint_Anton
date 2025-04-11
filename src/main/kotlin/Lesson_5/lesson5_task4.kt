@@ -10,15 +10,14 @@ fun main() {
 
     if (userInputName == USER_NAME) {
         println("Введите ваш пароль:")
+        val userInputPassword: String = readln()
+
+        if (userInputPassword == USER_PASSWORD) {
+            println("Пользователь $USER_NAME, вам разрешено выходить на борт корабля \"Heart of Gold\"!")
+        }
+
     } else {
         println("Пользователь $userInputName отсутвует в списке. Желаете зарегистрироваться?")
-        return
-    }
-
-    val userInputPassword: String = readln()
-
-    if (userInputPassword == USER_PASSWORD) {
-        println("Пользователь $USER_NAME, вам разрешено выходить на борт корабля \"Heart of Gold\"!")
     }
 
 }
