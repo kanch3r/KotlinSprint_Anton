@@ -6,22 +6,18 @@ fun main() {
 
     println("Добро пожаловать в калькулятор топлива!")
     println("Введите растояние поездки в киллометрах:")
-    val inputUser1: String = readln()
+    val inputUserDistanceKm: Double = readln().toDouble()
 
     println("Введите расход топлива на 100 км (в литрах):")
-    val inputUser2: String = readln()
+    val inputUserFuelConsumptions: Double = readln().toDouble()
 
     println("Введите цену за литр топлива:")
-    val inputUser3: String = readln()
+    val inputUserFuelPriceForOneL: Double = readln().toDouble()
 
-    val distance: Double = inputUser1.toDouble()
-    val fuelConsumptions: Double = inputUser2.toDouble()
-    val fuelPriceForOneL: Double = inputUser3.toDouble()
+    val totalFuelNeeded: Double = (inputUserDistanceKm * inputUserFuelConsumptions) / DELIMITER_FOR_FUEL_CONSUMPTION
+    val totalPriceForFuel: Double = totalFuelNeeded * inputUserFuelPriceForOneL
 
-    val totalFuelNeeded: Double = (distance * fuelConsumptions) / DELIMITER_FOR_FUEL_CONSUMPTION
-    val totalPriceForFuel: Double = totalFuelNeeded * fuelPriceForOneL
-
-    println("Общее количество необходимого топлива: $totalFuelNeeded")
+    println("Общее количество необходимого топлива: ${"%.2f".format(totalFuelNeeded)}")
     println("Итоговая стоимость топлива ${"%.2f".format(totalPriceForFuel)}")
 
 }
