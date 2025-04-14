@@ -9,20 +9,17 @@ fun main() {
 
     println("Добро пожаловать в калькулятор ИМТ!")
     println("Введите пожалуйста ваш вес в киллограмах:")
-    val userInput1: String = readln()
+    val userInputWeightKg: Double = readln().toDouble()
 
     println("Введите пожалуйста ваш рост в сантимерах:")
-    val userInput2: String = readln()
+    val userInputHeightM: Double = readln().toDouble() / CONVERT_CM_TO_METERS
 
-    val userWeightKg: Double = userInput1.toDouble()
-    val userHeightM: Double = userInput2.toDouble() / CONVERT_CM_TO_METERS
+    val calculatedImt: Double = userInputWeightKg / (userInputHeightM * userInputHeightM)
 
-    val calculatedImt: Double = userWeightKg / (userHeightM * userHeightM)
-
-    val resultImt = when {
-        calculatedImt < IMT_LOW -> "Недостаточная масса тела"
-        calculatedImt >= IMT_LOW && calculatedImt < IMT_NORMAL -> "Нормальная масса тела"
-        calculatedImt >= IMT_NORMAL && calculatedImt < IMT_HIGH -> "Избыточная масса тела"
+    val resultImt = when(calculatedImt) {
+        in 0.0..IMT_LOW -> "Недостаточная масса тела"
+        in IMT_LOW..IMT_NORMAL -> "Нормальная масса тела"
+        in IMT_NORMAL..IMT_HIGH -> "Избыточная масса тела"
         else -> "Ожирение"
     }
 
