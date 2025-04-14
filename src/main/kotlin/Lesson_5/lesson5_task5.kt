@@ -10,12 +10,12 @@ const val FAIL: Int = 0
 
 fun main() {
 
-    val randomNumbersList = List<Int>(3) { (MIN_RANGE..MAX_RANGE).random() }
+    val randomNumbersList = List<Int>(MATCH_NEEDED) { (MIN_RANGE..MAX_RANGE).random() }
 
     println("Для победы в лотерее вам нужно угадать $MATCH_NEEDED разных числа от 0 до 42!")
     println("Введите $MATCH_NEEDED числа через Enter от 0 до 42:")
 
-    val userNumberList = List<Int>(3) { readln().toInt() }
+    val userNumberList = List<Int>(MATCH_NEEDED) { readln().toInt() }
 
     val result = randomNumbersList.intersect(userNumberList)
 
