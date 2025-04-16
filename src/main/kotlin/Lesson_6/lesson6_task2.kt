@@ -1,16 +1,14 @@
 package org.example.Lesson_6
 
+const val CONVERT_SEC_TO_MILLISEC: Long = 1000
 
 fun main() {
 
     println("Установите таймер в секундах:")
-    val userTimer = readln().toInt()
-    var counter = userTimer
+    val userTimerSeconds = readln().toInt()
+    val milliseconds = userTimerSeconds * CONVERT_SEC_TO_MILLISEC
+    Thread.sleep(milliseconds)
 
-    while (counter > 0) {
-        counter--
-        Thread.sleep(1000)
-    }
-    println("Прошло $userTimer секунд")
+    println("Прошло $userTimerSeconds секунд")
 
 }
