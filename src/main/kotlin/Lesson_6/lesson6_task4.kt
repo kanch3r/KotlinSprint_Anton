@@ -7,7 +7,7 @@ const val ATTEMPTS: Int = 5
 fun main() {
 
     println("Угадай число от $LOW_RANGE до $HIGH_RANGE. У тебя $ATTEMPTS попыток")
-    val number = (LOW..HIGH).random()
+    val number = (LOW_RANGE..HIGH_RANGE).random()
 
     var counter = ATTEMPTS
 
@@ -18,10 +18,12 @@ fun main() {
         if (userInputDigit == number) {
             println("Угадал! Это была великолепная игра!")
             return
-        } else if (counter == 0) {
-            println("Попытки закончились, спасибо за игру! Было загадано число $number.")
         } else {
             println("У тебя осталось ${counter} попытки.")
         }
+    }
+
+    if (counter == 0) {
+        println("Попытки закончились, спасибо за игру! Было загадано число $number.")
     }
 }
