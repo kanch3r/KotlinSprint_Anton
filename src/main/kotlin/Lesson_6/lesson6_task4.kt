@@ -7,20 +7,21 @@ const val ATTEMPTS: Int = 5
 fun main() {
 
     println("Угадай число от $LOW_RANGE до $HIGH_RANGE. У тебя $ATTEMPTS попыток")
-    val number = (LOW_RANGE..HIGH_RANGE).random()
+    val number = (LOW..HIGH).random()
 
     var counter = ATTEMPTS
 
     while (counter > 0) {
         val userInputDigit = readln().toInt()
+        counter--
 
         if (userInputDigit == number) {
             println("Угадал! Это была великолепная игра!")
             return
-        } else if (counter == 1) {
+        } else if (counter == 0) {
             println("Попытки закончились, спасибо за игру! Было загадано число $number.")
         } else {
-            println("У тебя осталось ${--counter} попытки.")
+            println("У тебя осталось ${counter} попытки.")
         }
     }
 }
