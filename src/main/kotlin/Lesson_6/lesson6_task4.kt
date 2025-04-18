@@ -18,12 +18,11 @@ fun main() {
         if (userInputDigit == number) {
             println("Угадал! Это была великолепная игра!")
             return
-        } else {
+        } else if (counter > 0) {
             println("У тебя осталось ${counter} попытки.")
         }
     }
 
-    if (counter == 0) {
-        println("Попытки закончились, спасибо за игру! Было загадано число $number.")
-    }
+    println("Попытки закончились, спасибо за игру! Было загадано число $number.")
+
 }
