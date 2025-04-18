@@ -21,10 +21,11 @@ fun main() {
         if (number1 + number2 == userInputNumber) {
             println("Добро пожаловать!")
             return
-        } else if (counter == 0) {
-            println("Доступ запрещён!")
-        } else {
+        } else if (counter > 0) {
             println("Ответ неверный, попробуйте ещё раз. У вас осталось $counter попытки")
         }
     }
+
+    println("Доступ запрещён!")
+
 }
