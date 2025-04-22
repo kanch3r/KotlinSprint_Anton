@@ -9,7 +9,8 @@ fun main() {
     var result: String = ""
 
     for (i in START_PROGRESSION_FROM..userInputNumber step 2) {
-            result += i
+        result += i
+        print(i)
     }
-    println(result)
+
 }
