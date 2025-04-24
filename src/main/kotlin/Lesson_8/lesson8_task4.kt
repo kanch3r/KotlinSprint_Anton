@@ -8,13 +8,14 @@ fun main() {
     println("Какой ингредиент вы хотите заменить?")
     val userInputIngredient = readln()
 
-    if (olivierRecipe.contains(userInputIngredient)) {
+    val ingredientIndex = olivierRecipe.indexOf(userInputIngredient)
+
+    if (ingredientIndex != -1) {
         println("Что хотите добавить?")
         val userInputNewIngredient = readln()
 
-        olivierRecipe[olivierRecipe.indexOf(userInputIngredient)] = userInputNewIngredient
+        olivierRecipe[ingredientIndex] = userInputNewIngredient
         println("Готово! Вы сохранили следущий список: ${olivierRecipe.joinToString()}.")
-
     } else {
         println("Такого ингредиента в рецепте нет.")
     }
