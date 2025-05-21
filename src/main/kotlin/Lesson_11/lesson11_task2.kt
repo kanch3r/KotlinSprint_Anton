@@ -8,7 +8,7 @@ class User2(
     var bio: String? = null,
 ) {
 
-    fun infoAboutUser() {
+    fun displayUserInfo() {
         println("User ID: $id")
         println("User Login: $login")
         println("User Password: $password")
@@ -16,12 +16,12 @@ class User2(
         println("User Bio: $bio")
     }
 
-    fun bioEdit() {
+    fun updateBio() {
         println("Введите новый текст о себе:")
         bio = readln()
     }
 
-    fun passwordChange() {
+    fun changePassword() {
         println("Для смены пароля введите ваш текущий пароль:")
         val userInput = readln()
         if (password.equals(userInput)) {
@@ -40,9 +40,9 @@ fun main() {
     val userGarry = User2(1, "Garry", "12345", "GP@hogwarts.com", "The boy who lived!",)
     val userRon = User2(2, "Ron", "qwerty", "RW@hogwarts.com",)
 
-    userGarry.infoAboutUser()
-    userGarry.bioEdit()
-    userGarry.passwordChange()
-    userGarry.infoAboutUser()
+    userGarry.displayUserInfo()
+    userGarry.updateBio()
+    userGarry.changePassword()
+    userGarry.displayUserInfo()
 
 }
