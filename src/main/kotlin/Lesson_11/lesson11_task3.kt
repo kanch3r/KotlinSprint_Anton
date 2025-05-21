@@ -18,10 +18,8 @@ class Room(
 
     fun addMember(user: Member) = participants.add(user)
 
-    fun updateMemberStatus(user: Member) {
-        if (user in participants) {
-            user.userStatus = "onAir"
-        }
+    fun updateMemberStatus(user: String, newStatus: String) {
+        participants.forEach { if (it.nickname == user) it.userStatus = newStatus }
     }
 }
 
@@ -30,14 +28,14 @@ fun main() {
     val kurilka = Room(
         roomName = "Курилка",
     )
-    val user = Member("Антон")
+    val user1 = Member("Антон")
     val user2 = Member("Вася")
 
     println(kurilka.participants)
-    kurilka.addMember(user)
+    kurilka.addMember(user1)
     kurilka.addMember(user2)
-    kurilka.updateMemberStatus(user)
+    kurilka.updateMemberStatus("Антон", "onAir")
     println(kurilka.participants)
-    println(user.userStatus)
+    println(user1.userStatus)
 
 }
