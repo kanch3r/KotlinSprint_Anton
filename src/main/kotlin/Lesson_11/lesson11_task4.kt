@@ -1,32 +1,25 @@
 package org.example.Lesson_11
 
-class СategoryOfRecipe (
+class Сategory(
     val nameOfCategory: String,
-    val icon: String,
-    val shortDescription: String,
+    val idCategory: Int,
+    val pictureCategory: String,
+    val shortDescription: String? = null,
+    val recipeOfCategory: List<Recipe>? = null,
 )
 
-class Recipe (
+class Recipe(
     val nameOfRecipe: String,
-    val icon: String,
+    val idRecipe: Int,
+    val pictureRecipe: String,
+    val ingredientsOfRecipe: List<Ingredient>,
+    val preparationProcess: String,
+    var portions: Int = 1,
+    var inFavorites: Boolean = false,
 )
 
-class Ingredients(
-    val dishName: String,
-    val icon: String,
-    val ingredients: List<String>,
-    val quantity: Float,
-    val units: String,
-    var portions: Int,
-    val preparationProcess: String,
-    var inFavorites: Boolean = false,
-) {
-    fun addToFavorites() {
-        inFavorites = true
-    }
-}
-
-class Favorites(
-    val name: String,
-    val listOfFavorites: MutableList<String>,
+class Ingredient(
+    val nameOfIngredient: String,
+    val quantityOfIngredient: Int,
+    val unitsOfMeasure: String,
 )
