@@ -2,25 +2,25 @@ package org.example.Lesson_11
 
 class Member (
     val nickname: String,
-    var onAir: Boolean = false,
-    var micOn: Boolean = false,
-    var muted: Boolean = true,
-)
+    var userPicture: String = nickname.first().toString(),
+    var userStatus: String = "muted",
+) {
+    override fun toString(): String {
+        return "Member(nickname=$nickname, userPicture=$userPicture, userStatus=$userStatus"
+    }
+}
 
 class Room(
     val roomName: String,
     var roomPicture: String = "grey color",
-    val participants: MutableList<String> = mutableListOf(),
+    val participants: MutableList<Member> = mutableListOf(),
 ) {
-    fun addMember(user: Member) {
-        participants += user.nickname
-    }
 
-    fun getMemberStatus(user: Member) {
-        if (user.nickname in participants) {
-            user.micOn = true
-            user.muted =false
-            println("Микрофон включен: ${user.micOn}")
+    fun addMember(user: Member) = participants.add(user)
+
+    fun updateMemberStatus(user: Member) {
+        if (user in participants) {
+            user.userStatus = "onAir"
         }
     }
 }
@@ -31,10 +31,13 @@ fun main() {
         roomName = "Курилка",
     )
     val user = Member("Антон")
+    val user2 = Member("Вася")
 
     println(kurilka.participants)
     kurilka.addMember(user)
+    kurilka.addMember(user2)
+    kurilka.updateMemberStatus(user)
     println(kurilka.participants)
-    println(kurilka.getMemberStatus(user))
+    println(user.userStatus)
 
 }
