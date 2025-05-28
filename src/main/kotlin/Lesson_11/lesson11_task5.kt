@@ -3,32 +3,12 @@ package org.example.Lesson_11
 class ForumUser(
     val userId: Int,
     val name: String,
-) {
-    class Builder {
-        var userId: Int = 0
-        var name: String = "Unknown"
-
-        fun setUserId(userId: Int): Builder = apply { this.userId = userId }
-        fun setName(name: String): Builder = apply { this.name = name }
-
-        fun build(): ForumUser = ForumUser(userId, name)
-    }
-}
+)
 
 class ForumMessage(
     val authorId: Int,
     val message: String,
-) {
-    class Builder {
-        var authorId: Int = 0
-        var message: String = "Empty message"
-
-        fun setAuthorId(authorId: Int): Builder = apply { this.authorId = authorId }
-        fun setMessage(message: String): Builder = apply { this.message = message }
-
-        fun build(): ForumMessage = ForumMessage(authorId, message)
-    }
-}
+)
 
 class Forum(
     var registerUserId: Int = 1,
@@ -37,30 +17,18 @@ class Forum(
 ) {
 
     fun createNewUser(userName: String): ForumUser {
-        val newUser = ForumUser.Builder()
-            .setUserId(registerUserId)
-            .setName(userName)
-            .build()
-
+        val newUser = ForumUser(registerUserId, userName)
         registerUserId++
         listOfForumUsers.add(newUser)
         return newUser
     }
 
-    fun createNewMessage(userId: Int, text: String): ForumMessage? {
-        val user = listOfForumUsers.find { it.userId == userId }
-        return if (user != null) {
-            val newMessage = ForumMessage.Builder()
-                .setAuthorId(userId)
-                .setMessage(text)
-                .build()
-
-            messageList.add(newMessage)
-            newMessage
-        } else {
-            println("Только зарегистрированные пользователи могут оставлять сообщения!")
-            null
+    fun createNewMessage(userId: Int, text: String) {
+        if (listOfForumUsers.find { (it.userId == userId) } == null) {
+            return
         }
+        val newMessage = ForumMessage(userId, text)
+        messageList.add(newMessage)
     }
 
     fun printThread() {
