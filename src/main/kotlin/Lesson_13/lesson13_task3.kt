@@ -17,6 +17,6 @@ fun main() {
         DirectoryThird("Sirius", 123456789, "null"),
     )
 
-    userList.forEach { println(it.company) }
+    userList.forEach { if (it.company != null) println(it.company)  }
 
 }
