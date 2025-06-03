@@ -13,13 +13,13 @@ fun main() {
     println("Введите номер контакта:")
     val contactNumber = try {
         readln().toLong()
-    } catch (e: Exception) {
-        println("Ошибка: ${e}")
+    } catch (e: NumberFormatException) {
+        println("Ошибка: ${e::class.simpleName}")
         null
     }
 
     println("Введите организацию:")
-    val contactCompany: String? = readln()
+    val contactCompany: String? = readlnOrNull()?.ifEmpty { null }
 
     val newUser = ContactFolks(contactName, contactNumber, contactCompany)
     newUser.printData()
