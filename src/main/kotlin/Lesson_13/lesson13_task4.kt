@@ -5,23 +5,38 @@ class ContactEmployee(val name: String, val number: Long?, val company: String? 
     fun printData() = println("Имя:$name \nНомер:$number \nКомпания:${company ?: "не указано"}")
 }
 
+fun checkNumber(): Long {
+    println("Введите номер контакта:")
+    return readln().toLongOrNull() ?: run {
+        println("Неверный формат! Введите номер ещё раз:")
+        checkNumber()
+    }
+}
+
 fun main() {
 
     val userList: MutableList<ContactEmployee> = mutableListOf()
 
-    println("Введите имя контакта:")
-    val contactName: String = readln()
+    while (true) {
 
-    println("Введите номер контакта:")
-    val contactNumber: Long? = readln().toLongOrNull() ?: return println("Неверный формат!")
+        println("Введите имя контакта(или 'выход' для выхода из меню создания контакта):")
+        val contactName: String = readln()
+        if (contactName.lowercase() == "выход") break
 
-    println("Введите организацию:")
-    val contactCompany: String? = readlnOrNull()?.ifEmpty { null }
+        val contactNumber: Long? = checkNumber()
 
-    val newUser = ContactEmployee(contactName, contactNumber, contactCompany)
+        println("Введите организацию:")
+        val contactCompany: String? = readlnOrNull()?.ifEmpty { null }
 
-    userList.add(newUser)
+        val newUser = ContactEmployee(contactName, contactNumber, contactCompany)
 
-    userList.forEach { it.printData() }
+        userList.add(newUser)
+        println("Контакт успешно добавлен!")
+    }
+
+    println("Список сохранённых контактов:")
+    if (userList.isEmpty()) println("Список пуст") else {
+        userList.forEach { it.printData() }
+    }
 
 }
