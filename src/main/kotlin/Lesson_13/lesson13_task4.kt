@@ -1,6 +1,6 @@
 package org.example.Lesson_13
 
-class ContactEmployee(val name: String, val number: Long?, val company: String? = null) {
+class ContactEmployee(val name: String, val number: Long, val company: String? = null) {
 
     fun printData() = println("Имя:$name \nНомер:$number \nКомпания:${company ?: "не указано"}")
 }
@@ -23,10 +23,10 @@ fun main() {
         val contactName: String = readln()
         if (contactName.lowercase() == "выход") break
 
-        val contactNumber: Long? = checkNumber()
+        val contactNumber: Long = checkNumber()
 
         println("Введите организацию:")
-        val contactCompany: String? = readlnOrNull()?.ifEmpty { null }
+        val contactCompany: String? = readln().ifEmpty { null }
 
         val newUser = ContactEmployee(contactName, contactNumber, contactCompany)
 
