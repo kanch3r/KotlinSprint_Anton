@@ -37,10 +37,10 @@ fun main() {
     )
 
     val totalSumOfPerimetersOfBlackFigures = listOfFigures
-        .filter { it.color == "Black" }
+        .filter { it.color == COLOR_BLACK }
         .sumOf { it.calculatePerimeter() }
     val totalSumOfSquaresOfWhiteFigures = listOfFigures
-        .filter { it.color == "White" }
+        .filter { it.color == COLOR_WHITE }
         .sumOf { it.calculateSquare() }
 
     println("Сумма периметров всех черных фигур: $totalSumOfPerimetersOfBlackFigures")
