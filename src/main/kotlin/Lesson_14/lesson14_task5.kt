@@ -18,12 +18,11 @@ class Chat() {
     var messageId: Int = 0
 
     fun addMessage(text: String, author: String) {
-        chat.add(Message(++messageId, text, author))
+        chat.add(Message(messageId++, text, author))
     }
 
     fun addThreadMessage(text: String, author: String, parentMessageId: Int) {
-        chat.add(ChildMessage(++messageId, text, author, parentMessageId))
-
+        chat.add(ChildMessage(messageId++, text, author, parentMessageId))
     }
 
     fun printChat() {
@@ -31,15 +30,14 @@ class Chat() {
 
         chat.forEach {
             if (it !is ChildMessage) {
-                println("${it.author}: ${it.text}")
+                println("[${it.idMessage}]${it.author}: ${it.text}")
             }
             repliesByParent[it.idMessage]?.forEach {
-                println("\t${it.author}: ${it.text}")
+                println("\t[${it.idMessage}]${it.author}: ${it.text}")
             }
         }
     }
 }
-
 
 fun main() {
     val chat = Chat()
