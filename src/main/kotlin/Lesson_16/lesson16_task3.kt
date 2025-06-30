@@ -4,11 +4,9 @@ class User {
     val login: String = "Пользователь"
     private val password: String = "123456"
 
-    fun getPassword() = password
-}
-
-fun checkPassword(userPassword: String): Boolean {
-    return userPassword == User().getPassword()
+    fun checkPassword(userPassword: String): Boolean {
+        return userPassword == password
+    }
 }
 
 fun main() {
@@ -20,8 +18,8 @@ fun main() {
 
     if (userInput == user.login) {
         println("Ввведите пароль:")
-        val userPassword = readln()
-        if (checkPassword(userPassword)) {
+        val userPasswordInput = readln()
+        if (user.checkPassword(userPasswordInput)) {
             println("Добро пожаловать!")
         } else {
             println("Пароль неверный!")
