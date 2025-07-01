@@ -52,21 +52,23 @@ interface MoveCargo {
     val name: String
     val cargoCapacity: Int
     var currentCargo: Int
-    fun addCargo() {
-        if (currentCargo < cargoCapacity) {
-            currentCargo += 1000
-            println("Загружено 1000 киллограм в $name. Всего $currentCargo груза из $cargoCapacity.")
+    fun addCargo(cargoToBeAdd: Int) {
+        if (currentCargo + cargoToBeAdd <= cargoCapacity) {
+            currentCargo += cargoToBeAdd
+            println("Загружено $cargoToBeAdd киллограмм в $name. Всего $currentCargo груза из $cargoCapacity.")
+            if (currentCargo == cargoCapacity) println("$name загружен полностью.")
         } else {
-            println("$name уже заполнен грузом.")
+            println("Невозможно добавить $cargoToBeAdd в $name. Свободного места ${cargoCapacity - currentCargo}.")
         }
     }
 
-    fun removeCargo() {
-        if (currentCargo > 0) {
-            currentCargo -= 1000
-            println("Выгружено 1000 килограмм. Осталось $currentCargo груза из $cargoCapacity.")
+    fun removeCargo(cargoToBeRemove: Int) {
+        if (currentCargo - cargoToBeRemove >= 0) {
+            currentCargo -= cargoToBeRemove
+            println("Выгружено $cargoToBeRemove килограмм. Осталось $currentCargo груза из $cargoCapacity.")
+            if (currentCargo == 0) println("$name разгружен полностью.")
         } else {
-            println("$name: весь груз выгружен.")
+            println("Невозможно выгрузить $cargoToBeRemove из $name. Всего $currentCargo груза осталось.")
         }
     }
 }
@@ -83,8 +85,8 @@ fun main() {
     passengerCarAdditional.addPassenger()
     passengerCarAdditional.addPassenger()
     cargoCar.addPassenger()
-    cargoCar.addCargo()
-    cargoCar.addCargo()
+    cargoCar.addCargo(500)
+    cargoCar.addCargo(1500)
     println()
     passengerCarMain.startDrive()
     passengerCarAdditional.startDrive()
@@ -99,7 +101,7 @@ fun main() {
     passengerCarAdditional.removePassenger()
     passengerCarAdditional.removePassenger()
     cargoCar.removePassenger()
-    cargoCar.removeCargo()
-    cargoCar.removeCargo()
+    cargoCar.removeCargo(1500)
+    cargoCar.removeCargo(500)
 
 }
