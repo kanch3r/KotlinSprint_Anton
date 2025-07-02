@@ -3,19 +3,25 @@ package org.example.Lesson_17
 class Folder {
     val name: String = "Top Secret"
         get() {
-            if (isSecret) {
-                println("Скрытая папка. Кол-во файлов: 0")
+            return if (isSecret) {
+                "Скрытая папка"
             } else {
-                println("Имя папки:$field, Кол-во файлов: $numberOfFiles")
+                field
             }
-            return field
         }
-    private val numberOfFiles: Int = 50
+    val numberOfFiles: Int = 50
+        get() {
+            return if (isSecret) {
+                0
+            } else {
+                field
+            }
+        }
     private val isSecret: Boolean = true
 }
 
 fun main() {
-
     val folder = Folder()
-    folder.name
+    println("Имя папки: ${folder.name}")
+    println("Кол-во файлов: ${folder.numberOfFiles}")
 }
