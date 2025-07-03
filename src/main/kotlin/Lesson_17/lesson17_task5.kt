@@ -7,14 +7,13 @@ class User(login: String, password: String) {
             field = value
         }
     var userPassword = password
-        get() = field.map { "*" }.joinToString("")
+        get() = "*".repeat(field.length)
         set(value) {
             println("Вы не можете изменить пароль!")
         }
 }
 
 fun main() {
-
     val user1 = User("Garry", "123456")
     println(user1.userLogin)
     println(user1.userPassword)
