@@ -1,8 +1,8 @@
 package org.example.Lesson_17
 
-class Package() {
-    val id: Int = 1
-    var location: String = "Гонконг"
+class Package(id: Int, location: String) {
+    val packageId = id
+    var packageLocation = location
         set(value) {
             field = value
             countChangeLocation++
@@ -11,12 +11,12 @@ class Package() {
 }
 
 fun main() {
-    val mailPackage = Package()
+    val mailPackage = Package(1, "Гонконг")
 
-    println("Начальная точка посылки: ${mailPackage.location}")
-    mailPackage.location = "Новосибирск"
-    mailPackage.location = "Москва"
-    mailPackage.location = "Санкт-Петербург"
-    println("Финальная точка доставки: ${mailPackage.location}")
+    println("Начальная точка посылки: ${mailPackage.packageLocation}")
+    mailPackage.packageLocation = "Новосибирск"
+    mailPackage.packageLocation = "Москва"
+    mailPackage.packageLocation = "Санкт-Петербург"
+    println("Финальная точка доставки: ${mailPackage.packageLocation}")
     println("Количество перемещений: ${mailPackage.countChangeLocation}")
 }
