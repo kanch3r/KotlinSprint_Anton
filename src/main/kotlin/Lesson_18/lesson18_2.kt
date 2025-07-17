@@ -1,29 +1,15 @@
 package org.example.Lesson_18
 
-abstract class Dice {
-    abstract fun throwDice()
-}
-
-class DiceWith4Edges() : Dice() {
-    private val range: Int = (1..4).random()
-    override fun throwDice() {
-        println("Результат на кубике с 4-мя гранями: $range")
+abstract class Dice(private val diceOriginal: Int) {
+    val range = 1..diceOriginal
+    fun throwDice() {
+        println("Результат кубика $diceOriginal: ${range.random()}.")
     }
 }
 
-class DiceWith6Edges() : Dice() {
-    private val range: Int = (1..6).random()
-    override fun throwDice() {
-        println("Результат на кубике с 6-ю гранями: $range")
-    }
-}
-
-class DiceWith8Edges() : Dice() {
-    private val range: Int = (1..8).random()
-    override fun throwDice() {
-        println("Результат на кубике с 8-ю гранями: $range")
-    }
-}
+class DiceWith4Edges() : Dice(4)
+class DiceWith6Edges() : Dice(6)
+class DiceWith8Edges() : Dice(8)
 
 fun main() {
 
