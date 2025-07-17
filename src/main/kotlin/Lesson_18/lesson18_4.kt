@@ -1,18 +1,20 @@
 package org.example.Lesson_18
 
 open class Package {
-    open fun calculateArea() {}
+    open fun calculateArea(): Int {
+        return 0
+    }
 }
 
 class RectangleBox(private val length: Int, private val width: Int, private val height: Int) : Package() {
-    override fun calculateArea() {
-        println("Площадь прямоугольной коробки: ${2 * (length * width + length * height + height * width)}.")
+    override fun calculateArea(): Int {
+        return 2 * (length * width + length * height + height * width)
     }
 }
 
 class CubeBox(private val length: Int) : Package() {
-    override fun calculateArea() {
-        println("Площадь кубической коробки: ${(length * length) * 6}.")
+    override fun calculateArea(): Int {
+        return length * length * 6
     }
 }
 
@@ -22,5 +24,5 @@ fun main() {
 
     val packagesList = listOf<Package>(package1, package2)
 
-    packagesList.forEach { it.calculateArea() }
+    packagesList.forEach { println(it.calculateArea()) }
 }
