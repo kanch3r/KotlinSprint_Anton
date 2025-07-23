@@ -19,7 +19,7 @@ class Tank(
     }
 
     fun openFire() {
-        if (ammoName != "No ammo" && ammoDamage != 0) {
+        if (ammoName != Bullet.NULL.bulletName && ammoDamage != Bullet.NULL.bulletDamage) {
             println("$name fire with $ammoName and deals $ammoDamage damage.")
         } else {
             println("$name out of ammo. Can't take a shot.")
