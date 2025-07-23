@@ -4,13 +4,14 @@ enum class Bullet(val bulletName: String, val bulletDamage: Int) {
     BLUE("Blue bullets", 5),
     GREEN("Green bullets", 10),
     RED("Red bullets", 20),
+    NULL("No ammo", 0)
 }
 
 class Tank(
     val name: String,
-    var ammoName: String = "No ammo",
-    var ammoDamage: Int = 0,
-    ) {
+    var ammoName: String = Bullet.NULL.bulletName,
+    var ammoDamage: Int = Bullet.NULL.bulletDamage,
+) {
 
     fun takeBullet(bullet: Bullet) {
         ammoName = bullet.bulletName
