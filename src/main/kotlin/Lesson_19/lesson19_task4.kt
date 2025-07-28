@@ -4,23 +4,21 @@ enum class Bullet(val bulletName: String, val bulletDamage: Int) {
     BLUE("Blue bullets", 5),
     GREEN("Green bullets", 10),
     RED("Red bullets", 20),
-    NULL("No ammo", 0)
 }
 
 class Tank(
     val name: String,
-    var ammoName: String = Bullet.NULL.bulletName,
-    var ammoDamage: Int = Bullet.NULL.bulletDamage,
+    var ammoName: Bullet? = null,
 ) {
 
     fun takeBullet(bullet: Bullet) {
-        ammoName = bullet.bulletName
-        ammoDamage = bullet.bulletDamage
+        ammoName = bullet
     }
 
     fun openFire() {
-        if (ammoName != Bullet.NULL.bulletName && ammoDamage != Bullet.NULL.bulletDamage) {
-            println("$name fire with $ammoName and deals $ammoDamage damage.")
+        val currentAmmo = ammoName
+        if (currentAmmo != null) {
+            println("$name fire with ${currentAmmo.bulletName} and deals ${currentAmmo.bulletDamage} damage.")
         } else {
             println("$name out of ammo. Can't take a shot.")
         }
