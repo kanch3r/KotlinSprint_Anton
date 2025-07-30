@@ -1,6 +1,6 @@
 package org.example.Lesson_21
 
-fun Map<String, Int>.maxCategory() = this.maxBy { it.value }.key
+fun Map<String, Int>.maxCategory(): String? = this.maxByOrNull { it.value }?.key
 
 fun main() {
 
