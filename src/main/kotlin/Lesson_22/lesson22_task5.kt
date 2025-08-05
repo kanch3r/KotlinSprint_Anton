@@ -5,12 +5,7 @@ data class GalacticGuide(
     val placeDescription: String,
     val occasionTime: String,
     val distanceToEarthInLightYears: Double,
-) {
-    override fun toString(): String {
-        return "Место: $place,\nОписание: $placeDescription,\nВремя события: $occasionTime,\n" +
-                "Расстояние в световых годах от Земли: $distanceToEarthInLightYears"
-    }
-}
+)
 
 fun main() {
     val alphaCentauri = GalacticGuide(
@@ -21,5 +16,6 @@ fun main() {
         occasionTime = "Постоянная система (не событие)",
         distanceToEarthInLightYears = 4.37
     )
-    println(alphaCentauri)
+    val (place, _, _, _) = alphaCentauri
+    println(place)
 }
